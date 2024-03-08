@@ -12,7 +12,7 @@ app.get('/notes', (req, res) => {
 });
 
 // Serve 'index.html' for all other routes
-app.use((req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); // Ensure 'index.html' exists in the 'public' directory
 });
 
@@ -68,5 +68,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
