@@ -5,7 +5,8 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 app.use(express.json()); // Middleware to parse JSON bodies
-
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
+app.use(express.static('public')); // Serve static files from the 'public' directory
 // Serve 'notes.html' for '/notes' route
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'notes.html')); // Ensure 'notes.html' exists in the 'public' directory
@@ -25,6 +26,7 @@ app.get('/api/notes', (req, res) => {
         } else {
             try {
                 const notes = JSON.parse(data);
+                console.log('notes:', notes);
                 res.json(notes);
             } catch (error) {
                 console.error(error);
