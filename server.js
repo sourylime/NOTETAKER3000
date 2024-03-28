@@ -9,12 +9,12 @@ app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-enco
 app.use(express.static('public')); // Serve static files from the 'public' directory
 // Serve 'notes.html' for '/notes' route
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'notes.html')); // Ensure 'notes.html' exists in the 'public' directory
+    res.sendFile(path.join(__dirname, 'notes.html')); // Ensure 'notes.html' exists in the 'public' directory
 });
 
 // Serve 'index.html' for all other routes
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html')); // Ensure 'index.html' exists in the 'public' directory
+    res.sendFile(path.join(__dirname, 'index.html')); // Ensure 'index.html' exists in the 'public' directory
 });
 
 // Read notes from 'db.json'
